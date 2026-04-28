@@ -27,8 +27,7 @@ def get_connection():
         f"Uid={username};"
         f"Pwd={password};"
         f"Encrypt=yes;"
-        f"TrustServerCertificate=no;"
-        f"Authentication=SqlPassword;"
+        f"TrustServerCertificate=yes;"
     )
 
     return connect(connection_string)
@@ -90,9 +89,9 @@ def listar_productos():
         cursor = conn.cursor()
 
         cursor.execute("""
-            SELECT TOP 20 id, nombre, precio, img_url
+            SELECT TOP 20 Id, Nombre, Precio, imagen
             FROM productos
-            ORDER BY id DESC
+            ORDER BY Id DESC
         """)
         rows = cursor.fetchall()
 
