@@ -1,10 +1,11 @@
 import os
+from flask_cors import CORS
 from flask import Flask, jsonify, request
 from mssql_python import connect
 from email_service import enviar_correo_alerta
 
 app = Flask(__name__)
-
+CORS(app)
 
 def get_connection():
     server = os.getenv("DB_SERVER")
